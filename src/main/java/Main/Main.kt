@@ -144,23 +144,26 @@ class Main : JavaPlugin(), Listener {
 
             10 -> if (GUI === "Mage") {
                 e.isCancelled = true
-
-                val Point = c.getInt("uuid.$u.SkillPoint")
-                val Point2 = Point - 2
-                c.set("uuid.$u.SkillPoint", Point)
-                c.set("uuid.$u.SkillPoint.Skill1", "test")
-                val JobSkill = c.getInt("uuid.$u.SkillPoint")
-                p.sendMessage(ChatColor.BLUE.toString() + "testを取得しました残りスキルポイント" + JobSkill)
-                saveConfig()
+                val Skill2 = c.getString("uuid.$u.SkillPoint.Skill1")
+                  if (Skill2 != "test") {
+                    val Point = c.getInt("uuid.$u.SkillPoint")
+                    val Point2 = Point - 2
+                    c.set("uuid.$u.SkillPoint", Point2)
+                    c.set("uuid.$u.SkillPoint.Skill1", "test")
+                    val JobSkill = c.getInt("uuid.$u.SkillPoint")
+                    p.sendMessage(ChatColor.BLUE.toString() + "testを取得しました残りスキルポイント" + JobSkill)
+                    saveConfig()
+                }
             } else if (GUI === "Skilltree") {
                 e.isCancelled = true
                 inv = Bukkit.createInventory(null, 54, "Mage")
                 p.openInventory(inv)
                 inv.setItem(49, Close)
                 inv.setItem(10, Skilltest)
-
-
-
+                val Skill1 = c.getString("uuid.$u.SkillPoint.Skill1")
+                if(Skill1 == "test") {
+                    inv.setItem(10, Close)
+                }
             }
             12 -> if (GUI === "Skilltree") {
                 e.isCancelled = true
