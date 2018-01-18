@@ -2,6 +2,6 @@ name: ClassPlugin
 version: 1.0.0
 main: Main.Main
 commands:
-  Job:
+  Skill:
     description: Command no setsumeibun
     default: true
